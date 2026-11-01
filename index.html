@@ -1,25 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>BBP WISE</title>
+  <style>
+    html, body { margin: 0; height: 100%; background: #0b3d91; }
+  </style>
 </head>
 <body>
-  <iframe 
+  <iframe
+    id="app"
+    title="BBP WISE"
     src="https://script.google.com/macros/s/AKfycbzLSiZCH-_yB0rn4-hES-_UMIJuWyE0hWezBklbLY1l7I-OET38GJjwksd8jtPZAGXY/exec"
-    width="100%"
-    height="100%"
-    allowfullscreen="true"
+    allow="geolocation *; camera *; microphone *; clipboard-write *; fullscreen *"
+    allowfullscreen
     style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; border: none;">
   </iframe>
 
   <script>
-    window.onload = function() {
-      document.querySelector('iframe')
-        .requestFullscreen()
-        .catch((err) => {
-          console.error('Error attempting to enable full-screen mode:', err.message);
-        });
-    };
+    // Jalan keluar bila iframe bermasalah: buka https://mybbp.github.io/bbpwise/?langsung
+    if (/[?&]langsung/.test(location.search)) {
+      location.replace(document.getElementById('app').src);
+    }
   </script>
 </body>
 </html>
